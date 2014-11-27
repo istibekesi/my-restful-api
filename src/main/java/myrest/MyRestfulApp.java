@@ -2,6 +2,8 @@ package myrest;
 
 import model.v1.Assistant;
 import model.v1.Manager;
+import myrest.repo.InMemoryModelRepository;
+import myrest.repo.InMemoryModelRepositoryV2;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.ComponentScan;
@@ -49,13 +51,7 @@ public class MyRestfulApp {
         repo.addManager( new Manager(3, "9400", "Louis Van Gaal", "", "", true, asList(a7, a8, a9)));
 
 
-
-
-
-
-
-
-
+        // *****************************************************
 
         repoV2 = new InMemoryModelRepositoryV2();
 

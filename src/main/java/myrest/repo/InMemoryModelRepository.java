@@ -1,7 +1,7 @@
-package myrest;
+package myrest.repo;
 
-import model.v2.Assistant;
-import model.v2.Manager;
+import model.v1.Assistant;
+import model.v1.Manager;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -15,7 +15,7 @@ import java.util.Map;
  *
  * Created by ibekesi on 2014.11.26..
  */
-public class InMemoryModelRepositoryV2 {
+public class InMemoryModelRepository {
 
     private final Map<Long, Manager> managers = new HashMap<Long, Manager>();
     private final Map<Long, Assistant> assistants = new HashMap<Long, Assistant>();
@@ -52,6 +52,8 @@ public class InMemoryModelRepositoryV2 {
     public Assistant getAssistantById(long id) {
         return assistants.get(id);
     }
+
+
 
 
     public void addAssistants(List<Assistant> assistList) {

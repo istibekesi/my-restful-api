@@ -1,4 +1,4 @@
-package myrest.v2;
+package myrest.controller.v2;
 
 import model.v2.Assistant;
 import model.v2.Manager;
@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import java.util.List;
 
 /**
- * RESTful API LEVEL : 1 Resources
+ * RESTful API LEVEL : 2 HTTP Verbs
  */
 @Controller
 @RequestMapping("/myrest/v2")
@@ -45,6 +45,7 @@ public class MyRestControllerV2 {
     }
 
     @RequestMapping(value = "/assistant/{id}",
+            method = RequestMethod.GET,
             produces = {MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE}
     )
     @ResponseBody public Assistant assistants(@PathVariable long id){
