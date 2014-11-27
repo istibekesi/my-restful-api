@@ -1,4 +1,4 @@
-package model;
+package model.v1;
 
 /**
  * Created by ibekesi on 2014.11.26..

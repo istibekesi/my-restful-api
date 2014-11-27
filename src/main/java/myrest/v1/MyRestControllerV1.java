@@ -1,7 +1,8 @@
-package myrest;
+package myrest.v1;
 
-import model.Assistant;
-import model.Manager;
+import model.v1.Assistant;
+import model.v1.Manager;
+import myrest.MyRestfulApp;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,32 +12,27 @@ import java.util.List;
 
 /**
  * RESTful API LEVEL : 1 Resources
- *
  */
 @Controller
-public class MyRestController1 {
+@RequestMapping("/myrest/v1")
+public class MyRestControllerV1 {
 
-    @RequestMapping("/myrest/version")
-    @ResponseBody public String version() {
-        return "1.0.0";
-    }
-
-    @RequestMapping("/myrest/1/managers")
+    @RequestMapping("/managers")
     @ResponseBody public List<Manager> managers(){
         return MyRestfulApp.repo.getManagers();
     }
 
-    @RequestMapping("/myrest/1/manager/{id}")
+    @RequestMapping("/manager/{id}")
     @ResponseBody public Manager managers(@PathVariable long id){
         return MyRestfulApp.repo.getManagerById(id);
     }
 
-    @RequestMapping("/myrest/1/assistants")
+    @RequestMapping("/assistants")
     @ResponseBody public List<Assistant> assistants(){
         return MyRestfulApp.repo.getAssistants();
     }
 
-    @RequestMapping("/myrest/1/assistant/{id}")
+    @RequestMapping("/assistant/{id}")
     @ResponseBody public Assistant assistants(@PathVariable long id){
         return MyRestfulApp.repo.getAssistantById(id);
     }
