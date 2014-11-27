@@ -2,6 +2,7 @@ package myrest.controller.v2;
 
 import model.v2.Assistant;
 import model.v2.Manager;
+import model.v2.ManagersWrapper;
 import myrest.MyRestfulApp;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
@@ -24,8 +25,8 @@ public class MyRestControllerV2 {
             method = RequestMethod.GET,
             produces = {MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE}
     )
-    @ResponseBody public List<Manager> managers(){
-        return MyRestfulApp.repoV2.getManagers();
+    @ResponseBody public ManagersWrapper managers(){
+        return new ManagersWrapper(MyRestfulApp.repoV2.getManagers());
     }
 
     @RequestMapping(value = "/manager/{id}",

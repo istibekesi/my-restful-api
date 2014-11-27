@@ -43,7 +43,7 @@ public class Manager {
         this.id = id;
     }
 
-    @XmlAttribute
+    @XmlElement
     public String getExtension() {
         return extension;
     }
@@ -52,7 +52,7 @@ public class Manager {
         this.extension = extension;
     }
 
-    @XmlAttribute
+    @XmlElement
     public String getDescription() {
         return description;
     }
@@ -61,7 +61,7 @@ public class Manager {
         this.description = description;
     }
 
-    @XmlAttribute
+    @XmlElement
     public String getCallerIdRegex() {
         return callerIdRegex;
     }
@@ -70,7 +70,7 @@ public class Manager {
         this.callerIdRegex = callerIdRegex;
     }
 
-    @XmlAttribute
+    @XmlElement
     public String getCallerIdReplace() {
         return callerIdReplace;
     }
@@ -79,7 +79,7 @@ public class Manager {
         this.callerIdReplace = callerIdReplace;
     }
 
-    @XmlAttribute
+    @XmlElement
     public boolean isAvailable() {
         return available;
     }

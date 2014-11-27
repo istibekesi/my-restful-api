@@ -1,6 +1,7 @@
 package model.v2;
 
 import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -37,7 +38,7 @@ public class Assistant {
         this.id = id;
     }
 
-    @XmlAttribute
+    @XmlElement
     public String getName() {
         return name;
     }
@@ -46,7 +47,7 @@ public class Assistant {
         this.name = name;
     }
 
-    @XmlAttribute
+    @XmlElement
     public String getExtension() {
         return extension;
     }
@@ -55,7 +56,7 @@ public class Assistant {
         this.extension = extension;
     }
 
-    @XmlAttribute
+    @XmlElement
     public String getDescription() {
         return description;
     }
@@ -64,7 +65,7 @@ public class Assistant {
         this.description = description;
     }
 
-    @XmlAttribute
+    @XmlElement
     public String getStatus() {
         return status;
     }
