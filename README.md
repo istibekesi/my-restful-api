@@ -3,7 +3,6 @@
 
 Demo appliction demonstrating RESTful API Design.
 
-----------
 
 ### Requirements
 
