@@ -1,7 +1,8 @@
-package myrest;
+package myrest.v1;
 
 import model.Assistant;
 import model.Manager;
+import myrest.MyRestfulApp;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,11 +15,11 @@ import java.util.List;
  *
  */
 @Controller
-public class MyRestController1 {
+public class MyRestController {
 
-    @RequestMapping("/myrest/version")
+    @RequestMapping("/myrest/hello")
     @ResponseBody public String version() {
-        return "1.0.0";
+        return "Welcome - My RESTful API is up and running...!";
     }
 
     @RequestMapping("/myrest/1/managers")
