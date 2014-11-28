@@ -1,7 +1,7 @@
 package myrest.repo;
 
-import model.v2.Assistant;
-import model.v2.Manager;
+import model.v3.Assistant;
+import model.v3.Manager;
 
 import java.util.*;
 
@@ -12,7 +12,7 @@ import java.util.*;
  *
  * Created by ibekesi on 2014.11.26..
  */
-public class InMemoryModelRepositoryV2 {
+public class InMemoryModelRepositoryV3 {
 
     private final Map<Long, Manager> managers = new HashMap<Long, Manager>();
     private final Map<Long, Assistant> assistants = new HashMap<Long, Assistant>();

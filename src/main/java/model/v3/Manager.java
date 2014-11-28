@@ -1,14 +1,10 @@
-package model.v2;
+package model.v3;
 
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
 import java.util.List;
 
 /**
  * Created by ibekesi on 2014.11.26..
  */
-@XmlRootElement
 public class Manager {
 
     private long id;
@@ -20,10 +16,6 @@ public class Manager {
 
     private List<Assistant> assistantList;
 
-    public Manager(){
-        // JAXB needs a default constructor to be present!
-    };
-
     public Manager(long id, String extension, String description, String callerIdRegex, String callerIdReplace, boolean available, List<Assistant> assistantList) {
         this.id = id;
         this.extension = extension;
@@ -34,7 +26,6 @@ public class Manager {
         this.assistantList = assistantList;
     }
 
-    @XmlAttribute
     public long getId() {
         return id;
     }
@@ -43,7 +34,6 @@ public class Manager {
         this.id = id;
     }
 
-    @XmlElement
     public String getExtension() {
         return extension;
     }
@@ -52,7 +42,6 @@ public class Manager {
         this.extension = extension;
     }
 
-    @XmlAttribute
     public String getDescription() {
         return description;
     }
@@ -61,7 +50,6 @@ public class Manager {
         this.description = description;
     }
 
-    @XmlElement
     public String getCallerIdRegex() {
         return callerIdRegex;
     }
@@ -70,7 +58,6 @@ public class Manager {
         this.callerIdRegex = callerIdRegex;
     }
 
-    @XmlElement
     public String getCallerIdReplace() {
         return callerIdReplace;
     }
@@ -79,7 +66,6 @@ public class Manager {
         this.callerIdReplace = callerIdReplace;
     }
 
-    @XmlElement
     public boolean isAvailable() {
         return available;
     }
@@ -88,7 +74,6 @@ public class Manager {
         this.available = available;
     }
 
-    @XmlElement
     public List<Assistant> getAssistantList() {
         return assistantList;
     }
