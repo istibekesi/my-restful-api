@@ -3,10 +3,7 @@ package myrest.repo;
 import model.v2.Assistant;
 import model.v2.Manager;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * This is the repository we actually store the model objects for the demo application
@@ -62,4 +59,18 @@ public class InMemoryModelRepositoryV2 {
         }
     }
 
+    public void generateId(Assistant assistant) {
+        // Fake id generator, just for demo
+        // Generates random ids as long as finds a free assistant id
+        for (int i = 0; i < 10000 ; i++) {
+            Random rand = new Random();
+            int randomId = rand.nextInt(100);
+            if (getAssistantById(randomId) == null) {
+                assistant.setId(randomId);
+                System.out.println("Generated random id for " + assistant.getName() + " : " + randomId);
+                return;
+            }
+        }
+
+    }
 }
