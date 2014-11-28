@@ -64,7 +64,7 @@ public class InMemoryModelRepositoryV2 {
         // Generates random ids as long as finds a free assistant id
         for (int i = 0; i < 10000 ; i++) {
             Random rand = new Random();
-            int randomId = rand.nextInt(100);
+            int randomId = rand.nextInt(99)+1;
             if (getAssistantById(randomId) == null) {
                 assistant.setId(randomId);
                 System.out.println("Generated random id for " + assistant.getName() + " : " + randomId);
