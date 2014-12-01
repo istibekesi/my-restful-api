@@ -46,6 +46,21 @@ public class InMemoryModelRepositoryV3 {
         return new ArrayList(assistants.values());
     }
 
+    public List<Assistant> getAssistantsByManager(long managerId) {
+
+        if (managerId > 0) {
+            Manager manager = getManagerById(managerId);
+
+            if (manager != null && manager.getAssistantList() != null && !manager.getAssistantList().isEmpty()) {
+                return manager.getAssistantList();
+            }
+
+            return new ArrayList<Assistant>();
+        }
+
+        return getAssistants();
+    }
+
     public Assistant getAssistantById(long id) {
         return assistants.get(id);
     }

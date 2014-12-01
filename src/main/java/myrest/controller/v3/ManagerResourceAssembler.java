@@ -24,6 +24,7 @@ public final class ManagerResourceAssembler implements ResourceAssembler<Manager
         //managerResource.add(linkTo(GamesController.class).slash(game.getId()).withSelfRel());
 
         managerResource.add(linkTo(MyRestControllerV3.class).slash("manager").slash(manager.getId()).withSelfRel());
+        managerResource.add(linkTo(MyRestControllerV3.class).slash("assistants?byManager="+manager.getId()).withRel("assistants"));
 
         return managerResource;
     }

@@ -47,17 +47,25 @@ public class MyRestControllerV3 {
         return this.managerResourceAssembler.toResource(MyRestfulApp.repoV3.getManagerById(id));
     }
 
-    @RequestMapping(value = "/assistants",
+/*    @RequestMapping(value = "/assistants",
             method = RequestMethod.GET
     )
     @ResponseBody public List<Resource<Assistant>> assistants(){
         return assistantResourceAssembler.toResource(MyRestfulApp.repoV3.getAssistants());
     }
+    */
+
+    @RequestMapping(value = "/assistants",
+            method = RequestMethod.GET
+    )
+    @ResponseBody public List<Resource<Assistant>> assistants(@RequestParam(value = "byManager", required = false, defaultValue = "0") long managerId){
+        return assistantResourceAssembler.toResource(MyRestfulApp.repoV3.getAssistantsByManager(managerId));
+    }
 
     @RequestMapping(value = "/assistant/{id}",
             method = RequestMethod.GET
     )
-    @ResponseBody public Resource<Assistant> assistants(@PathVariable long id){
+    @ResponseBody public Resource<Assistant> assistant(@PathVariable long id){
         return assistantResourceAssembler.toResource(MyRestfulApp.repoV3.getAssistantById(id));
     }
 
