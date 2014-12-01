@@ -16,21 +16,19 @@ public class WebConfig extends WebMvcConfigurerAdapter {
 
     @Override
     public void configureContentNegotiation(ContentNegotiationConfigurer configurer) {
-
-        System.out.println("********************************** Configure...");
+        System.out.println("********************************** Configuring ContentNegotiation...");
 
         configurer
                 .favorPathExtension(false)
                 .favorParameter(false)
                 .ignoreAcceptHeader(false)
                 .useJaf(false)
-                .mediaType(MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_JSON)
-                .mediaType(MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_XML)
-                .mediaType("myXml", MediaType.APPLICATION_XML)
+//                .mediaType(MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_JSON)
+//                .mediaType(MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_XML)
+//                .mediaType("myXml", MediaType.APPLICATION_XML)
                 .defaultContentType(MediaType.APPLICATION_JSON);
 
-        System.out.println("********************************** Configure DONE!");
-
-
+        System.out.println("********************************** Configure ContentNegotiation DONE!");
     }
+
 }

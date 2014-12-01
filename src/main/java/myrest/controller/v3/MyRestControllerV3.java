@@ -3,6 +3,8 @@ package myrest.controller.v3;
 import model.v3.Assistant;
 import model.v3.Manager;
 import myrest.MyRestfulApp;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.hateoas.Resource;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -18,33 +20,45 @@ import java.util.List;
 public class MyRestControllerV3 {
 
 
+    private final ManagerResourceAssembler managerResourceAssembler;
+    private final AssistantResourceAssembler assistantResourceAssembler;
+
+
+    @Autowired
+    MyRestControllerV3(ManagerResourceAssembler managerResourceAssembler, AssistantResourceAssembler assistantResourceAssembler){
+        this.managerResourceAssembler = managerResourceAssembler;
+        this.assistantResourceAssembler = assistantResourceAssembler;
+    }
+
     @RequestMapping(
             value = "/managers",
             method = RequestMethod.GET
     )
-    @ResponseBody public List<Manager> managers(){
-        return MyRestfulApp.repoV3.getManagers();
+    @ResponseBody public List<Resource<Manager>> managers(){
+        //return MyRestfulApp.repoV3.getManagers();
+        return this.managerResourceAssembler.toResource(MyRestfulApp.repoV3.getManagers());
     }
 
     @RequestMapping(value = "/manager/{id}",
             method = RequestMethod.GET
     )
-    @ResponseBody public Manager managers(@PathVariable long id){
-        return MyRestfulApp.repoV3.getManagerById(id);
+    @ResponseBody public Resource<Manager> managers(@PathVariable long id){
+        //return MyRestfulApp.repoV3.getManagerById(id);
+        return this.managerResourceAssembler.toResource(MyRestfulApp.repoV3.getManagerById(id));
     }
 
     @RequestMapping(value = "/assistants",
             method = RequestMethod.GET
     )
-    @ResponseBody public List<Assistant> assistants(){
-        return MyRestfulApp.repoV3.getAssistants();
+    @ResponseBody public List<Resource<Assistant>> assistants(){
+        return assistantResourceAssembler.toResource(MyRestfulApp.repoV3.getAssistants());
     }
 
     @RequestMapping(value = "/assistant/{id}",
             method = RequestMethod.GET
     )
-    @ResponseBody public Assistant assistants(@PathVariable long id){
-        return MyRestfulApp.repoV3.getAssistantById(id);
+    @ResponseBody public Resource<Assistant> assistants(@PathVariable long id){
+        return assistantResourceAssembler.toResource(MyRestfulApp.repoV3.getAssistantById(id));
     }
 
 
