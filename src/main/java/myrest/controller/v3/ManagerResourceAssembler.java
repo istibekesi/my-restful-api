@@ -20,9 +20,6 @@ public final class ManagerResourceAssembler implements ResourceAssembler<Manager
     public Resource<Manager> toResource(Manager manager) {
         Resource<Manager> managerResource = new Resource<Manager>(manager);
 
-        //managerResource.add(linkTo(GamesController.class).slash(game.getId()).slash("doors").withRel("doors"));
-        //managerResource.add(linkTo(GamesController.class).slash(game.getId()).withSelfRel());
-
         managerResource.add(linkTo(MyRestControllerV3.class).slash("manager").slash(manager.getId()).withSelfRel());
         managerResource.add(linkTo(MyRestControllerV3.class).slash("assistants?byManager="+manager.getId()).withRel("assistants"));
 
