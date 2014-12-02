@@ -1,16 +1,19 @@
 package myrest.controller.v3;
 
 import model.v3.Assistant;
+import model.v3.AssistantsWrapper;
 import model.v3.Manager;
+import model.v3.ManagersWrapper;
 import myrest.MyRestfulApp;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.hateoas.Resource;
+import org.springframework.hateoas.ResourceSupport;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
+import static org.springframework.hateoas.mvc.ControllerLinkBuilder.linkTo;
 
 /**
  * RESTful API LEVEL : 3 HIPERMEDIA CONTROLS
@@ -30,36 +33,37 @@ public class MyRestControllerV3 {
         this.assistantResourceAssembler = assistantResourceAssembler;
     }
 
+    @RequestMapping(method = RequestMethod.GET)
+    @ResponseBody public ResourceSupport api(){
+        ResourceSupport resource = new ResourceSupport();
+
+        resource.add(linkTo(MyRestControllerV3.class).slash("managers").withRel("myManagers"));
+        resource.add(linkTo(MyRestControllerV3.class).slash("assistants").withRel("myAssistants"));
+
+        return resource;
+    }
+
     @RequestMapping(
             value = "/managers",
             method = RequestMethod.GET
     )
-    @ResponseBody public List<Resource<Manager>> managers(){
+    @ResponseBody public Resource<ManagersWrapper> managers(){
         //return MyRestfulApp.repoV3.getManagers();
-        return this.managerResourceAssembler.toResource(MyRestfulApp.repoV3.getManagers());
+        return this.managerResourceAssembler.toWrappedResource(MyRestfulApp.repoV3.getManagers());
     }
 
     @RequestMapping(value = "/manager/{id}",
             method = RequestMethod.GET
     )
     @ResponseBody public Resource<Manager> managers(@PathVariable long id){
-        //return MyRestfulApp.repoV3.getManagerById(id);
         return this.managerResourceAssembler.toResource(MyRestfulApp.repoV3.getManagerById(id));
     }
-
-/*    @RequestMapping(value = "/assistants",
-            method = RequestMethod.GET
-    )
-    @ResponseBody public List<Resource<Assistant>> assistants(){
-        return assistantResourceAssembler.toResource(MyRestfulApp.repoV3.getAssistants());
-    }
-    */
 
     @RequestMapping(value = "/assistants",
             method = RequestMethod.GET
     )
-    @ResponseBody public List<Resource<Assistant>> assistants(@RequestParam(value = "byManager", required = false, defaultValue = "0") long managerId){
-        return assistantResourceAssembler.toResource(MyRestfulApp.repoV3.getAssistantsByManager(managerId));
+    @ResponseBody public Resource<AssistantsWrapper> assistants(@RequestParam(value = "byManager", required = false, defaultValue = "0") long managerId){
+        return assistantResourceAssembler.toWrappedResource(MyRestfulApp.repoV3.getAssistantsByManager(managerId));
     }
 
     @RequestMapping(value = "/assistant/{id}",

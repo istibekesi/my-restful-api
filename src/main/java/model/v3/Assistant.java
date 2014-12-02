@@ -11,6 +11,10 @@ public class Assistant {
     private String description;
     private String status;
 
+    public Assistant() {
+
+    }
+
     public Assistant(long id, String name, String extension, String description, String status) {
         this.id = id;
         this.name = name;

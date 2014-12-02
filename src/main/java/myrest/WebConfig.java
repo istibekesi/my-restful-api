@@ -1,5 +1,6 @@
 package myrest;
 
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.MediaType;
 import org.springframework.web.servlet.config.annotation.ContentNegotiationConfigurer;
@@ -10,8 +11,11 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
  * Created by ibekesi on 2014.11.27..
  */
 @Configuration
+@ComponentScan
 @EnableWebMvc
+//@EnableHypermediaSupport
 public class WebConfig extends WebMvcConfigurerAdapter {
+//public class WebConfig extends WebMvcConfigurationSupport {
 
 
     @Override
@@ -20,12 +24,6 @@ public class WebConfig extends WebMvcConfigurerAdapter {
 
         configurer
                 .favorPathExtension(false)
-                .favorParameter(false)
-                .ignoreAcceptHeader(false)
-                .useJaf(false)
-//                .mediaType(MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_JSON)
-//                .mediaType(MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_XML)
-//                .mediaType("myXml", MediaType.APPLICATION_XML)
                 .defaultContentType(MediaType.APPLICATION_JSON);
 
         System.out.println("********************************** Configure ContentNegotiation DONE!");

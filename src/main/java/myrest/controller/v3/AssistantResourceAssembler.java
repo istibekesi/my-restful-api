@@ -1,6 +1,7 @@
 package myrest.controller.v3;
 
 import model.v3.Assistant;
+import model.v3.AssistantsWrapper;
 import org.springframework.hateoas.Resource;
 import org.springframework.hateoas.ResourceAssembler;
 import org.springframework.stereotype.Component;
@@ -20,9 +21,6 @@ public final class AssistantResourceAssembler implements ResourceAssembler<Assis
     public Resource<Assistant> toResource(Assistant assistant) {
         Resource<Assistant> assistantResource = new Resource<Assistant>(assistant);
 
-        //assistantResource.add(linkTo(GamesController.class).slash(game.getId()).slash("doors").withRel("doors"));
-        //assistantResource.add(linkTo(GamesController.class).slash(game.getId()).withSelfRel());
-
         assistantResource.add(linkTo(MyRestControllerV3.class).slash("assistant").slash(assistant.getId()).withSelfRel());
 
         return assistantResource;
@@ -37,5 +35,11 @@ public final class AssistantResourceAssembler implements ResourceAssembler<Assis
             }
         }
         return assistantResourceList;
+    }
+
+    public Resource<AssistantsWrapper> toWrappedResource(List<Assistant> assistants) {
+        Resource<AssistantsWrapper> assistantsWrapperResource = new Resource<AssistantsWrapper>(new AssistantsWrapper(toResource(assistants)));
+        assistantsWrapperResource.add(linkTo(MyRestControllerV3.class).slash("assistants").withSelfRel());
+        return assistantsWrapperResource;
     }
 }

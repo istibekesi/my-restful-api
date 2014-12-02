@@ -16,6 +16,10 @@ public class Manager {
 
     private List<Assistant> assistantList;
 
+    public Manager () {
+
+    }
+
     public Manager(long id, String extension, String description, String callerIdRegex, String callerIdReplace, boolean available, List<Assistant> assistantList) {
         this.id = id;
         this.extension = extension;

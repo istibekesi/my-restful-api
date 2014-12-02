@@ -1,6 +1,7 @@
 package myrest.controller.v3;
 
 import model.v3.Manager;
+import model.v3.ManagersWrapper;
 import org.springframework.hateoas.Resource;
 import org.springframework.hateoas.ResourceAssembler;
 import org.springframework.stereotype.Component;
@@ -21,7 +22,7 @@ public final class ManagerResourceAssembler implements ResourceAssembler<Manager
         Resource<Manager> managerResource = new Resource<Manager>(manager);
 
         managerResource.add(linkTo(MyRestControllerV3.class).slash("manager").slash(manager.getId()).withSelfRel());
-        managerResource.add(linkTo(MyRestControllerV3.class).slash("assistants?byManager="+manager.getId()).withRel("assistants"));
+        managerResource.add(linkTo(MyRestControllerV3.class).slash("assistants?byManager="+manager.getId()).withRel("myAssistants"));
 
         return managerResource;
     }
@@ -36,4 +37,12 @@ public final class ManagerResourceAssembler implements ResourceAssembler<Manager
         }
         return managerResourceList;
     }
+
+    public Resource<ManagersWrapper> toWrappedResource(List<Manager> managers) {
+        Resource<ManagersWrapper> managersWrapperResource = new Resource<ManagersWrapper>(new ManagersWrapper(toResource(managers)));
+        managersWrapperResource.add(linkTo(MyRestControllerV3.class).slash("managers").withSelfRel());
+        return managersWrapperResource;
+    }
+
+
 }
