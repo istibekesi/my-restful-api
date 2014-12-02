@@ -1,5 +1,7 @@
 package model.v3;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.util.List;
 
 /**
@@ -14,6 +16,7 @@ public class Manager {
     private String callerIdReplace;
     private boolean available;
 
+    @JsonProperty("_embedded")
     private List<Assistant> assistantList;
 
     public Manager () {

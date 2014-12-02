@@ -100,6 +100,7 @@ public class MyRestfulApp {
 
         repoV3.addAssistants( asList(a1w,a2w,a3w,a4w,a5w,a6w,a7w,a8w,a9w));
 
+
         // Managers
         repoV3.addManager( new model.v3.Manager(1, "9200", "Pep Guardiola", "", "", true, asList(a1w, a2w, a3w, a4w)));
         repoV3.addManager( new model.v3.Manager(2, "9300", "Carlo Ancelotti", "", "", true, asList(a5w, a6w, a7w)));
